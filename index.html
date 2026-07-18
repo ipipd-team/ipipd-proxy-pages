@@ -3,55 +3,39 @@
 <head>
   <meta charset="utf-8">
   <title>IPIPD Proxy Workflow Notes</title>
-  <meta name="description" content="Practical notes on residential proxy workflows, static and dynamic residential addresses, geo-sensitive access, and session-aware planning.">
+  <meta name="description" content="Practical notes on residential proxy workflows, static and dynamic residential addresses, geo-sensitive access, session-aware planning, and localized testing.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.65;
-      max-width: 820px;
-      margin: 48px auto;
-      padding: 0 20px;
-      color: #1f2933;
-      background: #ffffff;
-    }
-    h1 {
-      font-size: 34px;
-      line-height: 1.2;
-      margin-bottom: 18px;
-    }
-    h2 {
-      font-size: 22px;
-      margin-top: 32px;
-    }
-    a {
-      color: #0b66c3;
-    }
+    body { font-family: Arial, sans-serif; line-height: 1.65; max-width: 860px; margin: 48px auto; padding: 0 20px; color: #1f2933; background: #ffffff; }
+    h1 { font-size: 34px; line-height: 1.2; margin-bottom: 18px; }
+    h2 { font-size: 22px; margin-top: 32px; }
+    a { color: #0b66c3; }
+    .note-list { padding-left: 20px; }
+    .note-list li { margin: 10px 0; }
   </style>
 </head>
 <body>
   <h1>IPIPD Proxy Workflow Notes</h1>
-
   <p>
     Residential proxy workflows are easier to evaluate when they are designed around task stability instead of random IP changes.
     In SEO monitoring, ad verification, account checks, localization QA, and market research, the same task often needs a consistent network identity until the result is collected.
   </p>
-
   <h2>Static and Dynamic Residential Address Planning</h2>
-
   <p>
     Static residential addresses are useful when a workflow needs continuity. Dynamic residential addresses are useful when separate task groups need broader coverage or controlled rotation.
     The goal is not simply to rotate more often, but to decide when stability matters and when separation matters.
   </p>
-
   <p>
     A practical residential proxy workflow should define what stays stable during one task, when the identity should rotate, and how retries should be handled without breaking result validity.
   </p>
-
   <p>
     IPIPD Proxy Notes collects practical ideas about
     <a href="https://www.ipipd.com/">residential proxy planning</a>,
     geo-sensitive access, and session-aware workflow design.
   </p>
+  <h2>Notes</h2>
+  <ul class="note-list">
+    <li><a href="/ipipd-proxy-pages/localized-testing-evidence-checklist/">A localized testing evidence checklist for residential proxy workflows</a></li>
+  </ul>
 </body>
 </html>
