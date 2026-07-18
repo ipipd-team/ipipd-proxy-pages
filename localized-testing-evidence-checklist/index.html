@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A Localized Testing Evidence Checklist for Residential Proxy Workflows</title>
+  <meta name="description" content="A practical checklist for validating localized testing results with static and dynamic residential addresses.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.68; max-width: 860px; margin: 48px auto; padding: 0 20px; color: #1f2933; background: #ffffff; }
+    h1 { font-size: 34px; line-height: 1.2; margin-bottom: 16px; }
+    h2 { font-size: 22px; margin-top: 34px; }
+    a { color: #0b66c3; }
+    ul { padding-left: 22px; }
+    li { margin: 10px 0; }
+    .meta { color: #5b6673; font-size: 14px; margin-bottom: 28px; }
+    .back { margin-top: 36px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>A Localized Testing Evidence Checklist for Residential Proxy Workflows</h1>
+  <p class="meta">IPIPD technical note · Localized testing · Static residential addresses · Dynamic residential addresses</p>
+
+  <p>
+    Localized testing is only useful when the result can be explained later.
+    A page may return a normal response while still showing the wrong market, a generic version, the wrong currency, or content that does not match the test case.
+    For residential proxy workflows, the quality metric should be usable evidence, not only request success.
+  </p>
+
+  <p>
+    The checklist below is designed for teams that use residential network access to review public regional pages, landing pages, ecommerce information, localized content, or market-specific user experiences.
+    It keeps the focus on observable public pages and avoids treating proxy rotation as a replacement for measurement discipline.
+  </p>
+
+  <h2>1. Define the Localized Question</h2>
+  <p>
+    Start with a specific question before collecting pages.
+    For example: does the checkout page show the expected country, does the landing page load the correct language, does a promotion appear in a specific market, or does the product page show the expected availability?
+    Without a clear question, a successful response can still produce a useless sample.
+  </p>
+  <ul>
+    <li>Target country, city, language, or currency.</li>
+    <li>Expected page marker or content element.</li>
+    <li>Public URL being tested.</li>
+    <li>Reason the result matters to the workflow.</li>
+  </ul>
+
+  <h2>2. Choose Dynamic or Static Residential Addresses by Task Stage</h2>
+  <p>
+    Dynamic residential addresses fit discovery work because they support broader coverage across markets, pages, and sample groups.
+    Static residential addresses fit verification work because they keep the access identity stable while a team reviews screenshots, cookies, page state, or repeated observations.
+  </p>
+  <ul>
+    <li>Use dynamic residential addresses for broad public-page checks.</li>
+    <li>Use static residential addresses for fixed-region review and evidence capture.</li>
+    <li>Do not rotate randomly during a session-sensitive review.</li>
+    <li>Do not force one static address to handle a large sampling workload.</li>
+  </ul>
+
+  <h2>3. Record the Context Behind Each Sample</h2>
+  <p>
+    A sample should be reviewable without relying on memory.
+    The record should explain where the request came from, what page was checked, what the expected result was, and why the sample was accepted or rejected.
+  </p>
+  <ul>
+    <li>Timestamp and tested URL.</li>
+    <li>Proxy type, region rule, and rotation rule.</li>
+    <li>Session rule, browser context, or cookie condition when relevant.</li>
+    <li>Observed market marker such as language, currency, region text, or promotion label.</li>
+    <li>Screenshot or page evidence for important findings.</li>
+  </ul>
+
+  <h2>4. Separate Failure Types</h2>
+  <p>
+    A timeout, a wrong-region page, a redirect, and a valid page with missing content are different problems.
+    Classifying them separately helps the team decide whether to retry, rotate, keep the same static address, slow the request pace, or send the sample to manual review.
+  </p>
+  <ul>
+    <li>Wrong region: the page loads, but the market is not the intended one.</li>
+    <li>Generic fallback: the page loads, but localized details are absent.</li>
+    <li>Session drift: cookies, language, or page state changes during review.</li>
+    <li>Challenge or redirect: the page path changes before the target content appears.</li>
+    <li>Missing evidence: the result cannot be verified after collection.</li>
+  </ul>
+
+  <h2>5. Connect the Checklist to IPIPD</h2>
+  <p>
+    IPIPD content should stay inside the current product boundary: static residential addresses and dynamic residential addresses.
+    Dynamic residential addresses can support broader localized discovery, while static residential addresses can support repeatable review and evidence stability.
+    The useful decision is not whether one type is always better, but which type fits the stage of the test.
+  </p>
+  <p>
+    For a fuller explanation of this workflow, see IPIPD's guide to
+    <a href="https://www.ipipd.com/en-US/news/article/residential-proxy-for-localized-testing">residential proxy for localized testing</a>.
+  </p>
+
+  <p class="back"><a href="/ipipd-proxy-pages/">Back to IPIPD Proxy Workflow Notes</a></p>
+</body>
+</html>
