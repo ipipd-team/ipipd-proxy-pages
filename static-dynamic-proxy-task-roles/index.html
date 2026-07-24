@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Static and Dynamic Residential Proxy Roles in Real Workflows</title>
+  <meta name="description" content="A practical note on separating static residential proxy tasks from dynamic residential proxy tasks in repeatable business workflows.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.65; max-width: 860px; margin: 48px auto; padding: 0 20px; color: #1f2933; background: #ffffff; }
+    h1 { font-size: 34px; line-height: 1.2; margin-bottom: 18px; }
+    h2 { font-size: 22px; margin-top: 32px; }
+    a { color: #0b66c3; }
+    .summary { border-left: 4px solid #0b66c3; padding: 12px 0 12px 16px; background: #f5f8fc; }
+  </style>
+</head>
+<body>
+  <h1>Static and Dynamic Residential Proxy Roles in Real Workflows</h1>
+  <p class="summary">Residential proxy planning works better when static residential IPs and dynamic residential IPs are assigned to different parts of the task instead of being treated as interchangeable options.</p>
+
+  <p>Many proxy workflows fail because the team starts by asking how often the IP should rotate. A better first question is what the workflow is trying to prove. Some tasks need broad sampling across markets, while others need the same access context long enough to confirm a result.</p>
+
+  <h2>Use Dynamic Residential IPs for Sampling</h2>
+  <p>Dynamic residential IPs fit tasks where separation and coverage matter. A team may need to check public pages across several regions, compare localized prices, inspect ad visibility, or collect a wider set of page responses. In those cases, rotating between residential addresses can reduce sample bias and show whether a result is isolated or repeated across locations.</p>
+  <p>The important detail is to rotate by task boundary. A dynamic address should not change in the middle of one sample if that change makes the page result impossible to interpret. Rotation is useful when it creates independent samples, not when it interrupts one measurement.</p>
+
+  <h2>Use Static Residential IPs for Continuity</h2>
+  <p>Static residential IPs fit tasks where continuity matters. If a page issue needs several checks, a regional price needs repeated confirmation, or an account-adjacent workflow needs a stable environment, changing the network identity too often can add noise.</p>
+  <p>Static residential IPs are also easier to review with evidence: screenshots, timestamps, final URLs, visible page markers, and repeated observations can be compared without wondering whether the access identity changed during the test.</p>
+
+  <h2>Separate Discovery From Review</h2>
+  <p>A practical workflow can use both types. Dynamic residential IPs can discover differences across markets, while static residential IPs can confirm the findings that matter. This keeps the first stage broad and the second stage stable.</p>
+  <p>For more detail on how to choose between these task roles, see IPIPD's guide to <a href="https://www.ipipd.com/en-US/news/article/static-vs-dynamic-residential-proxy">static vs dynamic residential proxy workflows</a>.</p>
+
+  <p><a href="/ipipd-proxy-pages/">Back to IPIPD Proxy Workflow Notes</a></p>
+</body>
+</html>
