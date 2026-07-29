@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Residential Proxy Workflow Checklist for Marketplace Monitoring</title>
+  <meta name="description" content="A technical checklist for marketplace monitoring workflows that use residential proxies, market labels, retry caps, session rules, and review evidence.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.65; max-width: 860px; margin: 48px auto; padding: 0 20px; color: #1f2933; background: #ffffff; }
+    h1 { font-size: 34px; line-height: 1.2; margin-bottom: 18px; }
+    h2 { font-size: 22px; margin-top: 32px; }
+    a { color: #0b66c3; }
+    .summary { border-left: 4px solid #0b66c3; padding: 12px 0 12px 16px; background: #f5f8fc; }
+  </style>
+</head>
+<body>
+  <h1>Residential Proxy Workflow Checklist for Marketplace Monitoring</h1>
+
+  <p class="summary">Marketplace monitoring needs more than a working request. The result should carry enough evidence to explain which market was checked, which session rule was used, and whether the sample can support a decision.</p>
+
+  <p>Marketplace pages are often sensitive to region, language, currency, inventory, campaign rules, and session state. A page can load successfully while still showing a result that does not belong to the intended market. That makes raw status codes a weak quality measure for monitoring work.</p>
+
+  <p>A residential proxy workflow should therefore be designed around evidence fields. The question is not only whether the page opened. The question is whether the sample can be reviewed later without guessing how it was collected.</p>
+
+  <h2>Start With the Market Rule</h2>
+
+  <p>Before increasing request volume, define the market rule. A practical record should include target country or city, marketplace URL, product or category path, expected language, expected currency, proxy mode, timestamp, and final URL.</p>
+
+  <p>Those fields help separate real marketplace differences from measurement problems. If a product page redirects, changes currency, or hides a module, the reviewer needs to know whether the access region matched the test plan.</p>
+
+  <h2>Use Dynamic Residential Addresses for Coverage</h2>
+
+  <p>Dynamic residential addresses fit the coverage stage. They are useful when a team needs to compare multiple markets, collect public page samples, or identify where marketplace behavior changes.</p>
+
+  <p>The rotation rule should be tied to the market group, not left as random switching. Each group should have a retry cap, a sample limit, and a failure category so the workflow does not confuse broad coverage with noisy repetition.</p>
+
+  <h2>Use Static Residential Addresses for Review</h2>
+
+  <p>Static residential addresses fit the review stage. When a marketplace sample looks unusual, the team may need to reopen the same page under a stable region and compare screenshots, price fields, stock indicators, or final URLs.</p>
+
+  <p>This is especially important when the first sampling pass finds an anomaly. A stable review path helps determine whether the anomaly is reproducible or just a side effect of session drift, cache state, or a temporary page response.</p>
+
+  <h2>Classify Failures Before Retrying</h2>
+
+  <p>Retries should not replace diagnosis. A marketplace monitoring log should classify timeout, wrong market, redirect, missing price field, stock-state mismatch, page layout change, login prompt, and result not reproducible.</p>
+
+  <p>Different failure types require different actions. A timeout may deserve a retry. A wrong-market page may require a region rule check. A missing field may require parser review. A non-reproducible anomaly may require static residential address validation.</p>
+
+  <h2>Keep the Checklist Review-Ready</h2>
+
+  <p>The useful output of marketplace monitoring is not just a table of values. It is a review-ready checklist that connects every value to a region, session rule, timestamp, proxy behavior, and failure category.</p>
+
+  <p>For a related IPIPD guide, see <a href="https://www.ipipd.com/en-US/news/article/residential-proxy-for-marketplace-monitoring">residential proxy marketplace monitoring evidence workflow</a>.</p>
+
+  <p><a href="/ipipd-proxy-pages/">Back to IPIPD Proxy Workflow Notes</a></p>
+</body>
+</html>
