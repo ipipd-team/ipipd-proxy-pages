@@ -36,4 +36,16 @@
 
   <h2>Do Not Let Retries Rewrite the Sample</h2>
 
-  
+  <p>Retries are useful for short network failures, but they should not silently replace the original evidence. If a retry changes the final page, market signal, or session state, the workflow should label the sample as changed instead of treating the retry result as a clean replacement.</p>
+
+  <p>This helps the team decide whether to resample, move the item into stable confirmation, or mark it as an access-state issue. The goal is not to collect more successful loads; it is to collect fewer ambiguous results.</p>
+
+  <h2>Make the Result Useful to Non-Technical Reviewers</h2>
+
+  <p>The best promotion evidence is readable by people who did not run the task. A product, marketing, or operations reviewer should be able to see which region was tested, what was expected, what appeared, and why the result is trustworthy enough to act on.</p>
+
+  <p>For teams building this kind of review process, IPIPD supports static residential addresses for stable review and dynamic residential addresses for broader controlled coverage. A related guide is available here: <a href="https://www.ipipd.com/en-US/news/article/residential-proxy-for-localized-promotion-verification">localized promotion verification with residential proxies</a>.</p>
+
+  <p><a href="/ipipd-proxy-pages/">Back to IPIPD Proxy Workflow Notes</a></p>
+</body>
+</html>
