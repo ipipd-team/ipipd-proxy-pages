@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Localized Promotion Checks Need Evidence That Survives Review</title>
+  <meta name="description" content="A practical note on using stable residential proxy workflows to keep localized promotion checks reviewable across regions, sessions, redirects, and retry events.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.65; max-width: 860px; margin: 48px auto; padding: 0 20px; color: #1f2933; background: #ffffff; }
+    h1 { font-size: 34px; line-height: 1.2; margin-bottom: 18px; }
+    h2 { font-size: 22px; margin-top: 32px; }
+    a { color: #0b66c3; }
+    .summary { border-left: 4px solid #0b66c3; padding: 12px 0 12px 16px; background: #f5f8fc; }
+  </style>
+</head>
+<body>
+  <h1>Localized Promotion Checks Need Evidence That Survives Review</h1>
+
+  <p class="summary">A localized promotion check should not stop at whether a page loads. The useful question is whether the result can still be trusted after a team reviews the region, session, redirect, visible offer, and retry history.</p>
+
+  <p>Promotion checks are often treated as short verification tasks: open the page from a target market, confirm the offer, save the result, and move on. That approach is fast, but it can become unreliable when the workflow does not preserve enough context around each sample.</p>
+
+  <p>A page may return a successful response while still showing the wrong market, the wrong campaign path, a different currency, or a page state inherited from an earlier session. If the sample does not record those details, the team may mistake a measurement problem for a real promotion issue.</p>
+
+  <h2>Keep the Task Boundary Stable</h2>
+
+  <p>For one promotion check, the workflow should define what is allowed to stay stable: region, network identity, session state, cookie scope, final URL, and screenshot timing. Changing those elements in the middle of the task can make the comparison harder to defend later.</p>
+
+  <p>Dynamic residential addresses can help when the team needs coverage across many markets or campaign variants. Static residential addresses are better suited when one suspicious result needs a more stable review path. The important part is separating the discovery stage from the confirmation stage.</p>
+
+  <h2>Record More Than Pass or Fail</h2>
+
+  <p>A useful evidence record should include requested URL, final URL, target region, detected language, detected currency or offer marker, proxy mode, retry count, screenshot status, and the reason for any exception. These fields make later review much easier.</p>
+
+  <p>Without that record, several different problems can look identical: a redirect mismatch, a session drift problem, a blocked page state, or a real campaign configuration issue. The review team needs enough context to sort those cases without running the same task again from scratch.</p>
+
+  <h2>Do Not Let Retries Rewrite the Sample</h2>
+
+  
