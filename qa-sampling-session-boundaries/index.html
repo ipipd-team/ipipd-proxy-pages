@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QA Sampling Should Keep Proxy Session Boundaries Visible</title>
+  <meta name="description" content="A practical note on keeping proxy session boundaries visible during QA sampling, localized testing, and review-ready evidence collection.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.65; max-width: 860px; margin: 48px auto; padding: 0 20px; color: #1f2933; background: #ffffff; }
+    h1 { font-size: 34px; line-height: 1.2; margin-bottom: 18px; }
+    h2 { font-size: 22px; margin-top: 32px; }
+    a { color: #0b66c3; }
+    .summary { border-left: 4px solid #0b66c3; padding: 12px 0 12px 16px; background: #f5f8fc; }
+  </style>
+</head>
+<body>
+  <h1>QA Sampling Should Keep Proxy Session Boundaries Visible</h1>
+
+  <p class="summary">Localized QA samples are easier to trust when every result shows where the proxy session started, when it changed, and which review step accepted the evidence.</p>
+
+  <p>QA teams often use residential proxies to compare how pages behave across markets. A test may check language, price, offer availability, landing page routing, ad visibility, or account-adjacent screens. The output looks simple when it is reduced to pass or fail, but the workflow behind that result needs more context.</p>
+
+  <p>The most common problem is hidden session change. A sample may begin in one region, retry under a different network identity, and still return a successful page. That final page may be real, but it may not answer the same question as the original sample.</p>
+
+  <h2>Make the Boundary Visible</h2>
+
+  <p>A proxy session boundary should be visible in the QA record. The team should know which region was requested, which final URL loaded, whether the same session stayed active, and whether a retry changed the access identity.</p>
+
+  <p>This does not require a complicated system. A useful record can include target market, test page, session mode, retry count, final URL, screenshot status, and review outcome. These fields help a reviewer decide whether the sample is usable or needs confirmation.</p>
+
+  <p>For localized QA work, a residential proxy localized QA checklist gives teams a practical way to separate usable samples from noisy results.</p>
+
+  <p>Reference: <a href="https://www.ipipd.com/en-US/news/article/residential-proxy-localized-qa">residential proxy localized QA checklist</a>.</p>
+
+  <h2>Separate Sampling from Confirmation</h2>
+
+  <p>Sampling and confirmation should not use the same rule. Sampling needs enough coverage to find regional differences. Confirmation needs enough stability to make the result repeatable.</p>
+
+  <p>Dynamic residential addresses can support broader sampling across regions or page variants. Static residential addresses can support stable review when a specific result needs to be checked again. Mixing both goals in one workflow makes the evidence harder to explain.</p>
+
+  <h2>Do Not Hide Retries</h2>
+
+  <p>Retries should be part of the evidence, not an invisible cleanup step. If a retry keeps the same session and only resolves a timeout, the sample may still be clean. If a retry changes the region, browser state, or identity, the sample should be marked for review.</p>
+
+  <p>This distinction helps teams avoid false confidence. A successful request is not always a valid QA sample. The question is whether the final result still matches the original task boundary.</p>
+
+  <h2>Use Clear Review Labels</h2>
+
+  <p>A practical QA workflow can label samples as usable, needs confirmation, wrong region, session changed, blocked, or retry-only. These labels are more useful than treating every loaded page as a success.</p>
+
+  <p>Clear labels also help operations and SEO teams compare results over time. When a regional result changes, the team can see whether the site changed or the measurement context changed.</p>
+
+  <h2>Keep the Evidence Portable</h2>
+
+  <p>Good proxy evidence should be understandable outside the automation run that created it. Another person should be able to open the report and understand how the sample was collected.</p>
+
+  <p>When proxy session boundaries stay visible, localized QA becomes easier to repeat, easier to review, and easier to defend when a regional difference needs action.</p>
+
+  <p><a href="/ipipd-proxy-pages/">Back to IPIPD Proxy Workflow Notes</a></p>
+</body>
+</html>
