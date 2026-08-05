@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Proxy Retry Logs Need Evidence Boundaries Before Teams Trust the Result</title>
+  <meta name="description" content="A practical checklist for separating proxy retry logs, residential proxy rotation, and reviewable task evidence.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.65;
+      max-width: 860px;
+      margin: 48px auto;
+      padding: 0 20px;
+      color: #1f2933;
+      background: #ffffff;
+    }
+    h1 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    h2 {
+      font-size: 22px;
+      margin-top: 32px;
+    }
+    a {
+      color: #0b66c3;
+    }
+    .summary {
+      border-left: 4px solid #0b66c3;
+      padding: 12px 0 12px 16px;
+      background: #f5f8fc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Proxy Retry Logs Need Evidence Boundaries Before Teams Trust the Result</h1>
+
+  <p class="summary">A retry log should do more than prove that a request eventually succeeded. In residential proxy workflows, it should also show whether the final result still belongs to the same task, region, session, and evidence trail.</p>
+
+  <p>Many proxy workflows become difficult to review because retries are treated as a simple success or failure event. A request times out, the system retries, and the final response is recorded as usable. That may be fine for basic network uptime checks, but it is not enough for regional testing, marketplace monitoring, ad verification, account review, or SEO evidence collection.</p>
+
+  <p>The practical issue is context. If a retry changes the residential identity, market region, session state, or access path, the final page may no longer answer the same question as the original request. The sample may still load, but the evidence becomes harder to explain.</p>
+
+  <h2>Start With the Task Boundary</h2>
+
+  <p>A retry policy should begin by defining the task boundary. One task might be a marketplace listing check, a regional landing page capture, an account dashboard review, or a search result snapshot. During that task, the workflow should define what needs to stay stable and what can safely change.</p>
+
+  <p>If the task depends on a consistent regional view, the retry should not silently move into another region. If the task depends on account context, the retry should not change identity without marking the result as a new sample. If the task only needs broad coverage, rotation between separate samples may be acceptable.</p>
+
+  <h2>Record More Than Status Codes</h2>
+
+  <p>A useful retry log should record the request status, but it should also record the proxy context. At minimum, teams should capture the task ID, target URL, intended region, address type, session mode, retry number, retry reason, final URL, and whether the retry stayed inside the original task boundary.</p>
+
+  <p>Those fields make the final result reviewable. A team can see whether the evidence came from a stable session, a controlled retry, or a new sample created after rotation.</p>
+
+  <h2>Keep Rotation and Evidence Classification Separate</h2>
+
+  <p>Residential proxy rotation is useful when a workflow needs coverage across markets, listings, pages, or task groups. But rotation should not automatically mean that the final retry belongs to the original task. A clean workflow separates recovery decisions from evidence classification.</p>
+
+  <p>For marketplace checks, teams can use a <a href="https://www.ipipd.com/en-US/news/article/residential-proxy-for-marketplace-monitoring">residential proxy marketplace monitoring workflow</a> to keep regional samples, retry behavior, and review evidence easier to audit.</p>
+
+  <p>Link text: residential proxy marketplace monitoring workflow</p>
+
+  <h2>A Practical Checklist</h2>
+
+  <p>Before accepting a retried sample, teams should ask five questions. Did the retry keep the same intended region? Did it keep the same task identity? Did it preserve the session when session stability mattered? Did the workflow record why the retry happened? Did the final result still answer the original business question?</p>
+
+  <p>If the answer is unclear, the result should be marked for review or separated as a new sample. That small distinction prevents teams from mixing successful requests with trustworthy evidence.</p>
+
+  <h2>Why This Matters</h2>
+
+  <p>Proxy workflows are not only about reaching a page. They are about collecting results that can be compared, explained, and reused later. When retry logs preserve task boundaries, teams can improve reliability without losing the context that makes the data useful.</p>
+</body>
+</html>
