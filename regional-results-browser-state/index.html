@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regional Result Checks Should Separate Proxy Identity from Browser State</title>
+<meta name="description" content="How to separate proxy identity, browser state and cache during localized checks.">
+<style>
+body{max-width:780px;margin:0 auto;padding:40px 22px;color:#202124;font:17px/1.7 Arial,sans-serif}
+h1{font-size:34px;line-height:1.2}
+h2{margin-top:30px;font-size:23px}
+a{color:#0b66c3}
+</style>
+</head>
+<body>
+
+<a href="/ipipd-proxy-pages/">Back to IPIPD Proxy Workflow Notes</a>
+
+<h1>Regional Result Checks Should Separate Proxy Identity from Browser State</h1>
+
+<p>When a localized page shows an unexpected price, language, promotion, or search result, replacing the proxy immediately can hide the real cause. The visible page may still reflect cookies, cached assets, account history, or an earlier location signal.</p>
+
+<h2>Record the network identity first</h2>
+
+<p>Before changing anything, record the region, session identifier, timestamp, target URL, and visible result. This creates a baseline that can be compared with the next controlled check.</p>
+
+<h2>Test browser state separately</h2>
+
+<p>Repeat the request with the same proxy session but a clean browser profile. If the result changes, browser state was part of the evidence. If it remains stable, the team can investigate the network path with more confidence.</p>
+
+<p>Teams running repeated regional checks can use <a href="https://www.ipipd.com/en-US">residential proxy infrastructure</a> while keeping proxy identity, browser state, and task boundaries visible in their logs.</p>
+
+<h2>Rotate only when the test requires it</h2>
+
+<p>A static residential address is useful when several steps must remain connected. A dynamic residential address is useful when the workflow needs independent regional samples. Rotation should start a new sample instead of silently changing the identity inside an unfinished task.</p>
+
+<h2>Keep the evidence reviewable</h2>
+
+<p>A useful record connects each screenshot or extracted value to the proxy session and browser state that produced it. This makes unexpected results easier to reproduce and prevents teams from blaming every difference on the IP address.</p>
+
+</body>
+</html>
