@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Browser Proxy Checks Should Verify the Route Before the Result</title>
+  <meta name="description" content="A practical way to separate browser proxy configuration, route verification, and task evidence.">
+  <style>
+    body{max-width:780px;margin:0 auto;padding:40px 22px;color:#202124;font:17px/1.7 Arial,sans-serif}
+    h1{font-size:34px;line-height:1.2}h2{margin-top:30px;font-size:23px}a{color:#0b66c3}
+  </style>
+</head>
+<body>
+  <a href="/ipipd-proxy-pages/">Back to IPIPD Proxy Workflow Notes</a>
+  <h1>Browser Proxy Checks Should Verify the Route Before the Result</h1>
+  <p>A browser can appear ready for a regional task while still using a direct connection, stale system settings, or an extension configuration that does not match the intended proxy. Reviewing the target page before confirming the route makes the evidence unreliable.</p>
+  <h2>Verify the network path first</h2>
+  <p>Open a neutral IP-check page and record the visible IP, country, timestamp, browser profile, and session identifier. This baseline confirms that the browser is using the intended route before account checks, localization QA, or marketplace review begins.</p>
+  <h2>Keep configuration and evidence separate</h2>
+  <p>A proxy extension only controls how the browser connects. Cookies, cache, account history, and location permissions can still affect the visible result. Test the route first, then test browser state without silently changing both variables at once.</p>
+  <p>For practical setup and troubleshooting steps, see IPIPD's guide to <a href="https://www.ipipd.com/en-US/news/article/foxyproxy-browser-not-secure-troubleshooting">browser proxy configuration and verification</a>.</p>
+  <h2>Change one variable per retry</h2>
+  <p>If the check fails, record whether the team changed credentials, endpoint, browser profile, or session. A controlled retry is easier to review than replacing several settings and losing the reason the result changed.</p>
+</body>
+</html>
